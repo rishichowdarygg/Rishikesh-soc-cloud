@@ -59,7 +59,6 @@
       text-align: center;
     }
 
-    /* Background video layer (ambient blurred) */
     .hero-video-background {
       position: absolute;
       top: 0;
@@ -72,7 +71,6 @@
       z-index: 1;
     }
 
-    /* Foreground video (talking head / avatar) */
     .hero-video-foreground {
       position: absolute;
       top: 0;
@@ -83,7 +81,6 @@
       z-index: 2;
     }
 
-    /* Dark gradient overlay for text readability */
     .hero-overlay {
       position: absolute;
       top: 0;
@@ -94,7 +91,6 @@
       z-index: 3;
     }
 
-    /* Hero text content */
     .hero-content {
       position: relative;
       z-index: 10;
@@ -164,7 +160,7 @@
       100% { opacity: 0; transform: translateX(-50%) translateY(15px); }
     }
 
-    /* Control buttons (glassmorphism) */
+    /* Video controls (glassmorphism) */
     .video-controls {
       position: absolute;
       bottom: 30px;
@@ -195,7 +191,6 @@
       transform: scale(1.05);
     }
 
-    /* Sound hint badge */
     .sound-hint {
       position: absolute;
       bottom: 30px;
@@ -212,7 +207,7 @@
       transition: opacity 0.5s;
     }
 
-    /* ----- Rest of your existing content (projects, skills, etc.) ----- */
+    /* ----- Rest of content (projects, skills, etc.) ----- */
     .container {
       max-width: 1300px;
       margin: 0 auto;
@@ -307,7 +302,6 @@
 </head>
 <body>
 
-<!-- Three.js Canvas will be injected here -->
 <div id="particle-canvas"></div>
 
 <div class="main-content">
@@ -315,11 +309,11 @@
   <section class="hero-video-section" id="hero">
     <!-- Blurred ambient background video (same video, blurred) -->
     <video class="hero-video-background" id="bgVideo" muted playsinline loop>
-      <!-- Free stock cinematic video of a male developer working (from Pexels) -->
+      <!-- Free cinematic stock video of a male developer (Pexels / Pixabay) - works as avatar placeholder -->
       <source src="https://cdn.pixabay.com/video/2023/05/30/165556-829238675_large.mp4" type="video/mp4">
     </video>
     
-    <!-- Foreground main video (male avatar / talking head) -->
+    <!-- Foreground main video (male avatar) -->
     <video class="hero-video-foreground" id="fgVideo" muted playsinline loop>
       <source src="https://cdn.pixabay.com/video/2023/05/30/165556-829238675_large.mp4" type="video/mp4">
     </video>
@@ -331,13 +325,11 @@
       <p>Cybersecurity Student | SOC Analyst Aspirant | Threat Hunter</p>
     </div>
     
-    <!-- Scroll indicator -->
     <div class="scroll-indicator" id="scrollIndicator">
       <div class="mouse"></div>
       <span style="font-size: 0.7rem;">Scroll</span>
     </div>
     
-    <!-- Video controls -->
     <div class="video-controls">
       <div class="ctrl-btn" id="playPauseBtn"><i class="fas fa-pause"></i></div>
       <div class="ctrl-btn" id="muteUnmuteBtn"><i class="fas fa-volume-up"></i></div>
@@ -345,53 +337,175 @@
     <div class="sound-hint" id="soundHint">🔊 Tap for sound</div>
   </section>
 
-  <!-- Rest of your portfolio content -->
+  <!-- ========== ALL RESUME CONTENT ========== -->
   <div class="container">
     <!-- Objective -->
     <div class="section gsap-fade">
       <div class="card">
-        <p><i class="fas fa-bullseye"></i> <strong>Objective:</strong> Cybersecurity student seeking internship in SOC, threat detection, and incident response. Hands-on experience with Microsoft Sentinel, log analysis, and network traffic monitoring.</p>
+        <p><i class="fas fa-bullseye"></i> <strong>Objective:</strong> Cybersecurity-focused student seeking a cybersecurity internship to apply skills in security operations (SOC), threat detection, vulnerability assessment, and incident response. Hands-on experience with Microsoft Sentinel, log analysis, and network traffic monitoring, with a strong interest in protecting systems and data.</p>
       </div>
     </div>
 
-    <!-- Projects -->
+    <!-- Projects (full details from resume) -->
     <div id="projects" class="section gsap-fade">
-      <h2 class="section-title"><i class="fas fa-project-diagram"></i> SOC Labs & Projects</h2>
+      <h2 class="section-title"><i class="fas fa-project-diagram"></i> Cybersecurity Projects & SOC Labs</h2>
       <div class="grid-2">
-        <div class="card"><h3><i class="fas fa-cloud-upload-alt"></i> Enterprise SOC Lab</h3><div class="tech-stack"><span class="skill-badge">Sentinel</span><span class="skill-badge">Azure</span><span class="skill-badge">KQL</span></div><ul class="list-custom"><li>Deployed cloud SIEM</li><li>Detected brute force</li><li>Blocked malicious IPs</li></ul></div>
-        <div class="card"><h3><i class="fas fa-chart-line"></i> Network Traffic Analysis</h3><div class="tech-stack"><span class="skill-badge">Wireshark</span><span class="skill-badge">TCP/IP</span></div><ul class="list-custom"><li>Captured packet anomalies</li><li>Detected failed logins</li></ul></div>
-        <div class="card"><h3><i class="fas fa-gavel"></i> Risk & Governance</h3><div class="tech-stack"><span class="skill-badge">Risk Mgmt</span><span class="skill-badge">Data Privacy</span></div><ul class="list-custom"><li>Analyzed frameworks</li><li>Proposed improvements</li></ul></div>
+        <div class="card">
+          <h3><i class="fas fa-cloud-upload-alt"></i> Enterprise SOC Lab: Threat Detection & Incident Response</h3>
+          <div class="tech-stack">
+            <span class="skill-badge">Microsoft Sentinel</span>
+            <span class="skill-badge">Azure VM</span>
+            <span class="skill-badge">Log Analytics</span>
+            <span class="skill-badge">KQL</span>
+            <span class="skill-badge">Windows Security Logs</span>
+          </div>
+          <ul class="list-custom">
+            <li>Deployed cloud-based SIEM using Microsoft Sentinel integrated with Azure Virtual Machines</li>
+            <li>Ingested and analyzed security logs to detect brute force attack patterns (Event ID 4625)</li>
+            <li>Wrote KQL queries to identify failed login attempts and suspicious IP activity</li>
+            <li>Built dashboards to visualize attack trends and security events</li>
+            <li>Investigated incidents by correlating logs and identifying potential threat sources</li>
+            <li>Implemented response actions by blocking malicious IPs using Azure NSG rules</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-chart-line"></i> Network Traffic Analysis & Threat Detection Lab</h3>
+          <div class="tech-stack">
+            <span class="skill-badge">Wireshark</span>
+            <span class="skill-badge">TCP/IP</span>
+            <span class="skill-badge">Linux</span>
+          </div>
+          <ul class="list-custom">
+            <li>Captured and analyzed packet-level data to identify abnormal network behavior</li>
+            <li>Detected repeated failed login attempts and suspicious traffic patterns</li>
+            <li>Interpreted network protocols to understand communication flow and anomalies</li>
+            <li>Documented findings and recommended mitigation strategies</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-gavel"></i> Cybersecurity Risk & Governance Analysis</h3>
+          <div class="tech-stack">
+            <span class="skill-badge">Risk Management</span>
+            <span class="skill-badge">Data Privacy</span>
+            <span class="skill-badge">Compliance</span>
+          </div>
+          <ul class="list-custom">
+            <li>Analyzed cybersecurity frameworks and data privacy risks in organizational environments</li>
+            <li>Evaluated ethical implications of AI systems and secure data handling practices</li>
+            <li>Proposed strategies to improve security posture and risk management awareness</li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <!-- Skills -->
+    <!-- Technical Skills (complete list) -->
     <div id="skills" class="section gsap-fade">
-      <h2 class="section-title"><i class="fas fa-code-branch"></i> Technical Arsenal</h2>
+      <h2 class="section-title"><i class="fas fa-code-branch"></i> Technical Skills & Arsenal</h2>
       <div class="grid-2">
-        <div class="card"><h3>Security & SOC</h3><div class="tech-stack"><span class="skill-badge">Sentinel</span><span class="skill-badge">Threat Detection</span><span class="skill-badge">Incident Response</span></div></div>
-        <div class="card"><h3>Networking & Tools</h3><div class="tech-stack"><span class="skill-badge">Wireshark</span><span class="skill-badge">Azure</span><span class="skill-badge">Linux</span></div></div>
-        <div class="card"><h3>Languages & Query</h3><div class="tech-stack"><span class="skill-badge">KQL</span><span class="skill-badge">Python</span></div></div>
+        <div class="card">
+          <h3><i class="fas fa-shield-virus"></i> Security & SOC</h3>
+          <div class="tech-stack">
+            <span class="skill-badge">SIEM (Microsoft Sentinel)</span>
+            <span class="skill-badge">Log Analysis</span>
+            <span class="skill-badge">Threat Detection</span>
+            <span class="skill-badge">Incident Response</span>
+            <span class="skill-badge">Vulnerability Assessment</span>
+            <span class="skill-badge">Risk Prioritization</span>
+            <span class="skill-badge">Cybersecurity Fundamentals</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-network-wired"></i> Networking & Tools</h3>
+          <div class="tech-stack">
+            <span class="skill-badge">TCP/IP</span><span class="skill-badge">DNS</span><span class="skill-badge">Firewalls</span>
+            <span class="skill-badge">VPN Concepts</span><span class="skill-badge">Wireshark</span>
+            <span class="skill-badge">Microsoft Sentinel</span><span class="skill-badge">Azure</span>
+            <span class="skill-badge">Linux</span><span class="skill-badge">Windows</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-database"></i> Languages & Query</h3>
+          <div class="tech-stack">
+            <span class="skill-badge">KQL (Kusto Query Language)</span>
+            <span class="skill-badge">Basic Scripting</span>
+            <span class="skill-badge">Microsoft Excel</span>
+            <span class="skill-badge">Data Analysis</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-brain"></i> Core Competencies</h3>
+          <div class="tech-stack">
+            <span class="skill-badge">Problem Solving</span><span class="skill-badge">Critical Thinking</span>
+            <span class="skill-badge">Adaptability</span><span class="skill-badge">Team Collaboration</span>
+            <span class="skill-badge">Communication</span>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Certifications & Education -->
     <div id="certs" class="section gsap-fade">
-      <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Certifications</h2>
-      <div class="card"><ul><li>Cisco Networking in Cybersecurity</li><li>CompTIA Security+ (Planned)</li></ul><hr><p><strong>MVNU</strong> - B.S. Computer & Information Systems (2028)</p></div>
+      <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Certifications & Education</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3><i class="fas fa-certificate"></i> Certifications</h3>
+          <ul class="list-custom">
+            <li><i class="fas fa-check-circle"></i> <strong>Cisco Networking in Cybersecurity</strong> (Completed)</li>
+            <li><i class="fas fa-calendar-alt"></i> <strong>CompTIA Security+</strong> (Planned)</li>
+          </ul>
+          <hr>
+          <h3><i class="fas fa-university"></i> Education</h3>
+          <p><strong>Mount Vernon Nazarene University (MVNU)</strong><br>Bachelor of Science in Computer & Information Systems (Cybersecurity Focus)<br>Expected Graduation: 2028</p>
+          <p><strong>Relevant Coursework:</strong> Cybersecurity, Network Security, Ethical Hacking, Risk Management, Data Privacy, Cloud Security, Business Analytics.</p>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-user-graduate"></i> Experience & Leadership</h3>
+          <p><strong><i class="fas fa-flask"></i> Cybersecurity Labs & Academic Experience (2024 – Present)</strong></p>
+          <ul class="list-custom">
+            <li>Applied security operations concepts through hands-on labs and simulations</li>
+            <li>Conducted vulnerability analysis and practiced threat detection techniques</li>
+            <li>Developed understanding of incident response workflows and security monitoring</li>
+          </ul>
+          <p style="margin-top: 1rem;"><strong><i class="fas fa-chalkboard-user"></i> Leadership & Development</strong></p>
+          <ul class="list-custom">
+            <li>Designed a leadership training program focused on communication and team effectiveness</li>
+            <li>Applied emotional intelligence and conflict management in case study analysis</li>
+            <li>Strong focus on ethical decision-making and responsible data handling</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Skills (explicit) -->
+    <div id="additional" class="section gsap-fade">
+      <h2 class="section-title"><i class="fas fa-chart-simple"></i> Additional Skills</h2>
+      <div class="card" style="text-align: center;">
+        <div class="tech-stack" style="justify-content: center;">
+          <span class="skill-badge">Problem Solving</span>
+          <span class="skill-badge">Critical Thinking</span>
+          <span class="skill-badge">Communication</span>
+          <span class="skill-badge">Adaptability</span>
+          <span class="skill-badge">Team Collaboration</span>
+        </div>
+      </div>
     </div>
 
     <!-- Contact -->
-    <div id="contact" class="section gsap-fade" style="border-bottom:none">
+    <div id="contact" class="section gsap-fade" style="border-bottom: none;">
       <h2 class="section-title"><i class="fas fa-cloud-sun"></i> Let's Connect</h2>
-      <div class="card" style="text-align:center">
+      <div class="card" style="text-align: center;">
         <p><i class="fas fa-envelope"></i> rishijagarlamudi95@gmail.com | <i class="fas fa-phone-alt"></i> +1 469-877-2209</p>
-        <p><i class="fab fa-linkedin"></i> linkedin.com/in/rishikesh-jagarlamudi</p>
-        <div style="margin-top:1rem"><a href="mailto:rishijagarlamudi95@gmail.com" class="btn-primary" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6); padding:0.7rem 1.6rem; border-radius:40px; text-decoration:none; color:white">Email Me</a></div>
+        <p><i class="fab fa-linkedin"></i> linkedin.com/in/rishikesh-jagarlamudi | <i class="fas fa-map-marker-alt"></i> Frisco, Texas, USA</p>
+        <div style="margin-top: 1rem;">
+          <a href="mailto:rishijagarlamudi95@gmail.com" class="btn-primary" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6); padding:0.7rem 1.6rem; border-radius:40px; text-decoration:none; color:white; display:inline-block;">Email Me</a>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Actively seeking Cybersecurity Internship / SOC Analyst roles.</p>
       </div>
     </div>
   </div>
+
   <footer>
-    <p>© 2026 Rishikesh Jagarlamudi — <strong>soc-cloud.cloud</strong> | Cinematic Portfolio</p>
+    <p>© 2026 Rishikesh Jagarlamudi — <strong>soc-cloud.cloud</strong> | Cinematic SOC Portfolio</p>
   </footer>
 </div>
 
@@ -408,7 +522,6 @@
   renderer.setPixelRatio(window.devicePixelRatio);
   canvasContainer.appendChild(renderer.domElement);
   
-  // Create floating particles (orange + blue glow)
   const particleCount = 250;
   const geometry = new THREE.BufferGeometry();
   const positions = new Float32Array(particleCount * 3);
@@ -500,7 +613,7 @@
   });
   
   // -------------------------------
-  // 3. Video Controls (Male Avatar)
+  // 3. Video Controls (Avatar + Sound)
   // -------------------------------
   const fgVideo = document.getElementById('fgVideo');
   const bgVideo = document.getElementById('bgVideo');
@@ -527,7 +640,7 @@
   muteUnmuteBtn.addEventListener('click', () => {
     if (isMuted) {
       fgVideo.muted = false;
-      bgVideo.muted = true;
+      bgVideo.muted = true;   // keep background video muted for ambience
       muteUnmuteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
       soundHint.style.opacity = '0';
     } else {
@@ -539,7 +652,7 @@
     isMuted = !isMuted;
   });
   
-  // Start videos muted to allow autoplay
+  // Autoplay with mute initially (browsers allow muted autoplay)
   fgVideo.muted = true;
   bgVideo.muted = true;
   fgVideo.play().catch(e => console.log('Autoplay prevented:', e));
