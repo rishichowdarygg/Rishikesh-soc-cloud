@@ -3,25 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Rishikesh Jagarlamudi - Cybersecurity Professional | SOC Analyst | Threat Detection & Incident Response">
+  <meta name="description" content="Rishikesh Jagarlamudi - Cybersecurity Portfolio | SOC Analyst | Click anything to hear explanation">
   <meta name="theme-color" content="#0a0f1a">
-  <title>Rishikesh Jagarlamudi | SOC Analyst & Cybersecurity Engineer</title>
+  <title>Rishikesh Jagarlamudi | SOC Analyst & Voice-Enabled Portfolio</title>
   
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  
-  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
       background: #0a0f1a;
@@ -29,8 +21,6 @@
       line-height: 1.5;
       overflow-x: hidden;
     }
-
-    /* ----- Three.js canvas (cinematic particles) ----- */
     #particle-canvas {
       position: fixed;
       top: 0;
@@ -40,14 +30,9 @@
       pointer-events: none;
       z-index: 0;
     }
-
-    /* ----- Main content (above particles) ----- */
-    .main-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    /* ----- Cinematic Video Hero Section ----- */
+    .main-content { position: relative; z-index: 2; }
+    
+    /* Hero video section */
     .hero-video-section {
       position: relative;
       height: 100vh;
@@ -58,7 +43,6 @@
       justify-content: center;
       text-align: center;
     }
-
     .hero-video-background {
       position: absolute;
       top: 0;
@@ -70,7 +54,6 @@
       transform: scale(1.1);
       z-index: 1;
     }
-
     .hero-video-foreground {
       position: absolute;
       top: 0;
@@ -80,17 +63,15 @@
       object-fit: cover;
       z-index: 2;
     }
-
     .hero-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%);
+      background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
       z-index: 3;
     }
-
     .hero-content {
       position: relative;
       z-index: 10;
@@ -99,7 +80,6 @@
       opacity: 0;
       transform: translateY(30px);
     }
-
     .hero-content h1 {
       font-size: 4rem;
       font-weight: 800;
@@ -107,41 +87,28 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 1rem;
     }
-
-    .hero-content p {
-      font-size: 1.2rem;
-      color: #e2e8f0;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Scroll indicator */
+    .hero-content p { font-size: 1.2rem; color: #e2e8f0; margin-top: 1rem; }
+    
     .scroll-indicator {
       position: absolute;
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 15;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
       cursor: pointer;
       opacity: 0;
-      transition: opacity 0.5s;
+      text-align: center;
     }
-
-    .scroll-indicator .mouse {
+    .mouse {
       width: 26px;
       height: 40px;
       border: 2px solid rgba(255,255,255,0.6);
       border-radius: 20px;
       position: relative;
+      margin: 0 auto;
     }
-
-    .scroll-indicator .mouse::before {
+    .mouse::before {
       content: '';
       position: absolute;
       top: 8px;
@@ -153,14 +120,12 @@
       border-radius: 2px;
       animation: scrollWheel 1.5s infinite;
     }
-
     @keyframes scrollWheel {
       0% { opacity: 1; transform: translateX(-50%) translateY(0); }
       80% { opacity: 0; transform: translateX(-50%) translateY(15px); }
-      100% { opacity: 0; transform: translateX(-50%) translateY(15px); }
+      100% { opacity: 0; }
     }
-
-    /* Video controls (glassmorphism) */
+    
     .video-controls {
       position: absolute;
       bottom: 30px;
@@ -169,7 +134,6 @@
       display: flex;
       gap: 12px;
     }
-
     .ctrl-btn {
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(8px);
@@ -183,14 +147,8 @@
       cursor: pointer;
       transition: 0.3s;
       color: white;
-      font-size: 1.2rem;
     }
-
-    .ctrl-btn:hover {
-      background: rgba(255,255,255,0.25);
-      transform: scale(1.05);
-    }
-
+    .ctrl-btn:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
     .sound-hint {
       position: absolute;
       bottom: 30px;
@@ -201,24 +159,31 @@
       padding: 6px 14px;
       border-radius: 40px;
       font-size: 0.75rem;
-      color: #ccc;
-      pointer-events: none;
       opacity: 0;
-      transition: opacity 0.5s;
     }
-
-    /* ----- Rest of content (projects, skills, etc.) ----- */
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0 2rem;
+    
+    /* Voice toggle button */
+    .voice-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      border: 1px solid #3b82f6;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
     }
-
-    .section {
-      padding: 5rem 0;
-      border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-    }
-
+    .voice-toggle:hover { background: #3b82f6; }
+    
+    /* Content styles */
+    .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 5rem 0; border-bottom: 1px solid rgba(59, 130, 246, 0.2); }
     .section-title {
       font-size: 2rem;
       font-weight: 700;
@@ -229,14 +194,9 @@
       color: transparent;
       border-left: 4px solid #3b82f6;
       padding-left: 1.2rem;
+      cursor: pointer;
     }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
     .card {
       background: rgba(15, 23, 42, 0.6);
       backdrop-filter: blur(4px);
@@ -244,92 +204,50 @@
       padding: 1.8rem;
       border: 1px solid rgba(59, 130, 246, 0.2);
       transition: all 0.4s ease;
+      cursor: pointer;
     }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: #3b82f6;
-      box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.5);
-    }
-
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin: 1rem 0;
-    }
-
+    .card:hover { transform: translateY(-8px); border-color: #3b82f6; box-shadow: 0 20px 35px -15px rgba(0,0,0,0.5); }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0; }
     .skill-badge {
       background: rgba(59, 130, 246, 0.15);
       padding: 0.3rem 1rem;
       border-radius: 40px;
       font-size: 0.75rem;
       border: 0.5px solid rgba(59, 130, 246, 0.3);
+      cursor: pointer;
+      transition: 0.2s;
     }
-
-    .list-custom {
-      margin-top: 0.9rem;
-      margin-left: 1.2rem;
-    }
-
-    .badge-contact {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
-
-    .contact-icon {
-      background: rgba(15, 23, 42, 0.7);
-      padding: 0.5rem 1.2rem;
-      border-radius: 60px;
-      font-size: 0.85rem;
-      backdrop-filter: blur(4px);
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: #6f85a0;
-    }
-
-    @media (max-width: 720px) {
-      .hero-content h1 { font-size: 2.2rem; }
-      .container { padding: 0 1.2rem; }
-    }
+    .skill-badge:hover { background: rgba(59, 130, 246, 0.4); }
+    .list-custom { margin-top: 0.9rem; margin-left: 1.2rem; }
+    .badge-contact { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin: 1.5rem 0; }
+    .contact-icon { background: rgba(15, 23, 42, 0.7); padding: 0.5rem 1.2rem; border-radius: 60px; backdrop-filter: blur(4px); }
+    footer { text-align: center; padding: 2rem; color: #6f85a0; }
+    @media (max-width: 720px) { .hero-content h1 { font-size: 2.2rem; } .container { padding: 0 1.2rem; } }
+    .btn-primary { background: linear-gradient(135deg,#3b82f6,#8b5cf6); padding:0.7rem 1.6rem; border-radius:40px; text-decoration:none; color:white; display:inline-block; }
   </style>
 </head>
 <body>
 
 <div id="particle-canvas"></div>
+<div class="voice-toggle" id="voiceToggleBtn"><i class="fas fa-volume-up"></i> Voice ON</div>
 
 <div class="main-content">
-  <!-- Video Hero Section with Male Avatar -->
   <section class="hero-video-section" id="hero">
-    <!-- Blurred ambient background video (same video, blurred) -->
     <video class="hero-video-background" id="bgVideo" muted playsinline loop>
-      <!-- Free cinematic stock video of a male developer (Pexels / Pixabay) - works as avatar placeholder -->
       <source src="https://cdn.pixabay.com/video/2023/05/30/165556-829238675_large.mp4" type="video/mp4">
     </video>
-    
-    <!-- Foreground main video (male avatar) -->
     <video class="hero-video-foreground" id="fgVideo" muted playsinline loop>
       <source src="https://cdn.pixabay.com/video/2023/05/30/165556-829238675_large.mp4" type="video/mp4">
     </video>
-    
     <div class="hero-overlay"></div>
-    
     <div class="hero-content">
       <h1>RISHIKESH JAGARLAMUDI</h1>
-      <p>Cybersecurity Student | SOC Analyst Aspirant | Threat Hunter</p>
+      <p>Cybersecurity Student | SOC Analyst | Click anything for voice explanation</p>
     </div>
-    
     <div class="scroll-indicator" id="scrollIndicator">
       <div class="mouse"></div>
-      <span style="font-size: 0.7rem;">Scroll</span>
+      <span style="font-size:0.7rem;">Scroll</span>
     </div>
-    
     <div class="video-controls">
       <div class="ctrl-btn" id="playPauseBtn"><i class="fas fa-pause"></i></div>
       <div class="ctrl-btn" id="muteUnmuteBtn"><i class="fas fa-volume-up"></i></div>
@@ -337,326 +255,145 @@
     <div class="sound-hint" id="soundHint">🔊 Tap for sound</div>
   </section>
 
-  <!-- ========== ALL RESUME CONTENT ========== -->
   <div class="container">
     <!-- Objective -->
     <div class="section gsap-fade">
-      <div class="card">
-        <p><i class="fas fa-bullseye"></i> <strong>Objective:</strong> Cybersecurity-focused student seeking a cybersecurity internship to apply skills in security operations (SOC), threat detection, vulnerability assessment, and incident response. Hands-on experience with Microsoft Sentinel, log analysis, and network traffic monitoring, with a strong interest in protecting systems and data.</p>
+      <div class="card" data-speak="My objective: I am a cybersecurity student seeking an internship in SOC, threat detection, and incident response. I have hands-on experience with Microsoft Sentinel and network traffic monitoring.">
+        <p><i class="fas fa-bullseye"></i> <strong>Objective:</strong> Cybersecurity-focused student seeking a cybersecurity internship to apply skills in security operations (SOC), threat detection, vulnerability assessment, and incident response. Hands-on experience with Microsoft Sentinel, log analysis, and network traffic monitoring.</p>
       </div>
     </div>
 
-    <!-- Projects (full details from resume) -->
+    <!-- Projects -->
     <div id="projects" class="section gsap-fade">
-      <h2 class="section-title"><i class="fas fa-project-diagram"></i> Cybersecurity Projects & SOC Labs</h2>
+      <h2 class="section-title" data-speak="Projects section. I have three main cybersecurity projects."><i class="fas fa-project-diagram"></i> SOC Labs & Projects</h2>
       <div class="grid-2">
-        <div class="card">
-          <h3><i class="fas fa-cloud-upload-alt"></i> Enterprise SOC Lab: Threat Detection & Incident Response</h3>
-          <div class="tech-stack">
-            <span class="skill-badge">Microsoft Sentinel</span>
-            <span class="skill-badge">Azure VM</span>
-            <span class="skill-badge">Log Analytics</span>
-            <span class="skill-badge">KQL</span>
-            <span class="skill-badge">Windows Security Logs</span>
-          </div>
-          <ul class="list-custom">
-            <li>Deployed cloud-based SIEM using Microsoft Sentinel integrated with Azure Virtual Machines</li>
-            <li>Ingested and analyzed security logs to detect brute force attack patterns (Event ID 4625)</li>
-            <li>Wrote KQL queries to identify failed login attempts and suspicious IP activity</li>
-            <li>Built dashboards to visualize attack trends and security events</li>
-            <li>Investigated incidents by correlating logs and identifying potential threat sources</li>
-            <li>Implemented response actions by blocking malicious IPs using Azure NSG rules</li>
-          </ul>
+        <div class="card" data-speak="Enterprise SOC Lab using Microsoft Sentinel. I deployed a cloud SIEM, detected brute force attacks, wrote KQL queries, and blocked malicious IPs with Azure NSG rules.">
+          <h3><i class="fas fa-cloud-upload-alt"></i> Enterprise SOC Lab: Threat Detection & IR</h3>
+          <div class="tech-stack"><span class="skill-badge">Sentinel</span><span class="skill-badge">Azure</span><span class="skill-badge">KQL</span></div>
+          <ul class="list-custom"><li>Deployed cloud SIEM with Azure Sentinel</li><li>Detected brute force (Event ID 4625)</li><li>Wrote KQL queries for suspicious IPs</li><li>Blocked malicious IPs using Azure NSG</li></ul>
         </div>
-        <div class="card">
-          <h3><i class="fas fa-chart-line"></i> Network Traffic Analysis & Threat Detection Lab</h3>
-          <div class="tech-stack">
-            <span class="skill-badge">Wireshark</span>
-            <span class="skill-badge">TCP/IP</span>
-            <span class="skill-badge">Linux</span>
-          </div>
-          <ul class="list-custom">
-            <li>Captured and analyzed packet-level data to identify abnormal network behavior</li>
-            <li>Detected repeated failed login attempts and suspicious traffic patterns</li>
-            <li>Interpreted network protocols to understand communication flow and anomalies</li>
-            <li>Documented findings and recommended mitigation strategies</li>
-          </ul>
+        <div class="card" data-speak="Network Traffic Analysis lab with Wireshark. I captured packets, detected failed login attempts, and recommended mitigation strategies.">
+          <h3><i class="fas fa-chart-line"></i> Network Traffic Analysis</h3>
+          <div class="tech-stack"><span class="skill-badge">Wireshark</span><span class="skill-badge">TCP/IP</span><span class="skill-badge">Linux</span></div>
+          <ul class="list-custom"><li>Captured packet-level anomalies</li><li>Detected repeated failed logins</li><li>Documented findings & mitigation</li></ul>
         </div>
-        <div class="card">
-          <h3><i class="fas fa-gavel"></i> Cybersecurity Risk & Governance Analysis</h3>
-          <div class="tech-stack">
-            <span class="skill-badge">Risk Management</span>
-            <span class="skill-badge">Data Privacy</span>
-            <span class="skill-badge">Compliance</span>
-          </div>
-          <ul class="list-custom">
-            <li>Analyzed cybersecurity frameworks and data privacy risks in organizational environments</li>
-            <li>Evaluated ethical implications of AI systems and secure data handling practices</li>
-            <li>Proposed strategies to improve security posture and risk management awareness</li>
-          </ul>
+        <div class="card" data-speak="Cybersecurity Risk and Governance Analysis. I analyzed frameworks, evaluated AI ethics, and proposed security improvements.">
+          <h3><i class="fas fa-gavel"></i> Risk & Governance Analysis</h3>
+          <div class="tech-stack"><span class="skill-badge">Risk Mgmt</span><span class="skill-badge">Data Privacy</span></div>
+          <ul class="list-custom"><li>Analyzed frameworks & data privacy risks</li><li>Evaluated AI ethical implications</li><li>Proposed security posture improvements</li></ul>
         </div>
       </div>
     </div>
 
-    <!-- Technical Skills (complete list) -->
+    <!-- Skills -->
     <div id="skills" class="section gsap-fade">
-      <h2 class="section-title"><i class="fas fa-code-branch"></i> Technical Skills & Arsenal</h2>
+      <h2 class="section-title" data-speak="My technical skills include security operations, networking, and KQL querying."><i class="fas fa-code-branch"></i> Technical Skills</h2>
       <div class="grid-2">
-        <div class="card">
-          <h3><i class="fas fa-shield-virus"></i> Security & SOC</h3>
-          <div class="tech-stack">
-            <span class="skill-badge">SIEM (Microsoft Sentinel)</span>
-            <span class="skill-badge">Log Analysis</span>
-            <span class="skill-badge">Threat Detection</span>
-            <span class="skill-badge">Incident Response</span>
-            <span class="skill-badge">Vulnerability Assessment</span>
-            <span class="skill-badge">Risk Prioritization</span>
-            <span class="skill-badge">Cybersecurity Fundamentals</span>
-          </div>
+        <div class="card" data-speak="Security and SOC skills: Microsoft Sentinel, log analysis, threat detection, incident response, vulnerability assessment.">
+          <h3>Security & SOC</h3>
+          <div class="tech-stack"><span class="skill-badge" data-speak="Microsoft Sentinel">Sentinel</span><span class="skill-badge" data-speak="Log analysis">Log Analysis</span><span class="skill-badge" data-speak="Threat detection">Threat Detection</span><span class="skill-badge" data-speak="Incident response">Incident Response</span></div>
         </div>
-        <div class="card">
-          <h3><i class="fas fa-network-wired"></i> Networking & Tools</h3>
-          <div class="tech-stack">
-            <span class="skill-badge">TCP/IP</span><span class="skill-badge">DNS</span><span class="skill-badge">Firewalls</span>
-            <span class="skill-badge">VPN Concepts</span><span class="skill-badge">Wireshark</span>
-            <span class="skill-badge">Microsoft Sentinel</span><span class="skill-badge">Azure</span>
-            <span class="skill-badge">Linux</span><span class="skill-badge">Windows</span>
-          </div>
+        <div class="card" data-speak="Networking tools: Wireshark, TCP/IP, Azure, Linux, firewalls.">
+          <h3>Networking & Tools</h3>
+          <div class="tech-stack"><span class="skill-badge">Wireshark</span><span class="skill-badge">Azure</span><span class="skill-badge">Linux</span><span class="skill-badge">Firewalls</span></div>
         </div>
-        <div class="card">
-          <h3><i class="fas fa-database"></i> Languages & Query</h3>
-          <div class="tech-stack">
-            <span class="skill-badge">KQL (Kusto Query Language)</span>
-            <span class="skill-badge">Basic Scripting</span>
-            <span class="skill-badge">Microsoft Excel</span>
-            <span class="skill-badge">Data Analysis</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3><i class="fas fa-brain"></i> Core Competencies</h3>
-          <div class="tech-stack">
-            <span class="skill-badge">Problem Solving</span><span class="skill-badge">Critical Thinking</span>
-            <span class="skill-badge">Adaptability</span><span class="skill-badge">Team Collaboration</span>
-            <span class="skill-badge">Communication</span>
-          </div>
+        <div class="card" data-speak="Languages: KQL, basic scripting, Excel data analysis.">
+          <h3>Languages & Query</h3>
+          <div class="tech-stack"><span class="skill-badge">KQL</span><span class="skill-badge">Basic Scripting</span><span class="skill-badge">Excel</span></div>
         </div>
       </div>
     </div>
 
     <!-- Certifications & Education -->
     <div id="certs" class="section gsap-fade">
-      <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Certifications & Education</h2>
+      <h2 class="section-title" data-speak="Certifications and education. I have completed Cisco Networking in Cybersecurity and am planning CompTIA Security Plus."><i class="fas fa-graduation-cap"></i> Certifications & Education</h2>
       <div class="grid-2">
-        <div class="card">
-          <h3><i class="fas fa-certificate"></i> Certifications</h3>
-          <ul class="list-custom">
-            <li><i class="fas fa-check-circle"></i> <strong>Cisco Networking in Cybersecurity</strong> (Completed)</li>
-            <li><i class="fas fa-calendar-alt"></i> <strong>CompTIA Security+</strong> (Planned)</li>
-          </ul>
-          <hr>
-          <h3><i class="fas fa-university"></i> Education</h3>
-          <p><strong>Mount Vernon Nazarene University (MVNU)</strong><br>Bachelor of Science in Computer & Information Systems (Cybersecurity Focus)<br>Expected Graduation: 2028</p>
-          <p><strong>Relevant Coursework:</strong> Cybersecurity, Network Security, Ethical Hacking, Risk Management, Data Privacy, Cloud Security, Business Analytics.</p>
+        <div class="card" data-speak="Certifications: Cisco Networking in Cybersecurity completed, CompTIA Security+ planned. Education: Mount Vernon Nazarene University, B.S. in Computer and Information Systems with Cybersecurity focus, graduating 2028.">
+          <h3>Certifications</h3>
+          <ul><li>Cisco Networking in Cybersecurity (Completed)</li><li>CompTIA Security+ (Planned)</li></ul>
+          <hr><h3>Education</h3><p><strong>Mount Vernon Nazarene University</strong><br>B.S. Computer & Information Systems (Cybersecurity)<br>Expected 2028</p>
         </div>
-        <div class="card">
-          <h3><i class="fas fa-user-graduate"></i> Experience & Leadership</h3>
-          <p><strong><i class="fas fa-flask"></i> Cybersecurity Labs & Academic Experience (2024 – Present)</strong></p>
-          <ul class="list-custom">
-            <li>Applied security operations concepts through hands-on labs and simulations</li>
-            <li>Conducted vulnerability analysis and practiced threat detection techniques</li>
-            <li>Developed understanding of incident response workflows and security monitoring</li>
-          </ul>
-          <p style="margin-top: 1rem;"><strong><i class="fas fa-chalkboard-user"></i> Leadership & Development</strong></p>
-          <ul class="list-custom">
-            <li>Designed a leadership training program focused on communication and team effectiveness</li>
-            <li>Applied emotional intelligence and conflict management in case study analysis</li>
-            <li>Strong focus on ethical decision-making and responsible data handling</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Additional Skills (explicit) -->
-    <div id="additional" class="section gsap-fade">
-      <h2 class="section-title"><i class="fas fa-chart-simple"></i> Additional Skills</h2>
-      <div class="card" style="text-align: center;">
-        <div class="tech-stack" style="justify-content: center;">
-          <span class="skill-badge">Problem Solving</span>
-          <span class="skill-badge">Critical Thinking</span>
-          <span class="skill-badge">Communication</span>
-          <span class="skill-badge">Adaptability</span>
-          <span class="skill-badge">Team Collaboration</span>
+        <div class="card" data-speak="Experience: Cybersecurity labs since 2024. Leadership: designed training program focused on communication and ethical decision-making.">
+          <h3>Experience & Leadership</h3>
+          <ul><li>Cybersecurity Labs & Academic Experience (2024-Present)</li><li>Leadership training program designer</li><li>Ethical decision-making focus</li></ul>
         </div>
       </div>
     </div>
 
     <!-- Contact -->
-    <div id="contact" class="section gsap-fade" style="border-bottom: none;">
-      <h2 class="section-title"><i class="fas fa-cloud-sun"></i> Let's Connect</h2>
-      <div class="card" style="text-align: center;">
+    <div id="contact" class="section gsap-fade" style="border-bottom:none">
+      <h2 class="section-title" data-speak="Contact me via email or LinkedIn. I am actively seeking SOC internship opportunities."><i class="fas fa-cloud-sun"></i> Let's Connect</h2>
+      <div class="card" style="text-align:center">
         <p><i class="fas fa-envelope"></i> rishijagarlamudi95@gmail.com | <i class="fas fa-phone-alt"></i> +1 469-877-2209</p>
-        <p><i class="fab fa-linkedin"></i> linkedin.com/in/rishikesh-jagarlamudi | <i class="fas fa-map-marker-alt"></i> Frisco, Texas, USA</p>
-        <div style="margin-top: 1rem;">
-          <a href="mailto:rishijagarlamudi95@gmail.com" class="btn-primary" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6); padding:0.7rem 1.6rem; border-radius:40px; text-decoration:none; color:white; display:inline-block;">Email Me</a>
-        </div>
-        <p style="margin-top: 1rem; font-size: 0.9rem;">Actively seeking Cybersecurity Internship / SOC Analyst roles.</p>
+        <p><i class="fab fa-linkedin"></i> linkedin.com/in/rishikesh-jagarlamudi | Frisco, Texas</p>
+        <div style="margin-top:1rem"><a href="mailto:rishijagarlamudi95@gmail.com" class="btn-primary">Email Me</a></div>
+        <p style="margin-top:1rem">Actively seeking SOC Internship opportunities.</p>
       </div>
     </div>
   </div>
-
-  <footer>
-    <p>© 2026 Rishikesh Jagarlamudi — <strong>soc-cloud.cloud</strong> | Cinematic SOC Portfolio</p>
-  </footer>
+  <footer><p>© 2026 Rishikesh Jagarlamudi — <strong>soc-cloud.cloud</strong> | Voice‑Enabled Cybersecurity Portfolio</p></footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-  // -------------------------------
-  // 1. Three.js Cinematic Particles
-  // -------------------------------
+  // ----- Three.js Particles (same as before) -----
   const canvasContainer = document.getElementById('particle-canvas');
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
   const renderer = new THREE.WebGLRenderer({ alpha: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
   canvasContainer.appendChild(renderer.domElement);
-  
   const particleCount = 250;
   const geometry = new THREE.BufferGeometry();
-  const positions = new Float32Array(particleCount * 3);
-  for (let i = 0; i < particleCount; i++) {
-    positions[i*3] = (Math.random() - 0.5) * 30;
-    positions[i*3+1] = (Math.random() - 0.5) * 20;
-    positions[i*3+2] = (Math.random() - 0.5) * 15 - 10;
-  }
+  const positions = new Float32Array(particleCount*3);
+  for (let i=0; i<particleCount; i++) { positions[i*3]=(Math.random()-0.5)*30; positions[i*3+1]=(Math.random()-0.5)*20; positions[i*3+2]=(Math.random()-0.5)*15-10; }
   geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  
-  const materialOrange = new THREE.PointsMaterial({
-    color: 0xff6600,
-    size: 0.12,
-    transparent: true,
-    opacity: 0.6,
-    blending: THREE.AdditiveBlending
-  });
+  const materialOrange = new THREE.PointsMaterial({ color:0xff6600, size:0.12, transparent:true, blending:THREE.AdditiveBlending });
   const particlesOrange = new THREE.Points(geometry, materialOrange);
   scene.add(particlesOrange);
-  
-  const materialBlue = new THREE.PointsMaterial({
-    color: 0x3b82f6,
-    size: 0.08,
-    transparent: true,
-    opacity: 0.5,
-    blending: THREE.AdditiveBlending
-  });
+  const materialBlue = new THREE.PointsMaterial({ color:0x3b82f6, size:0.08, transparent:true, blending:THREE.AdditiveBlending });
   const particlesBlue = new THREE.Points(geometry, materialBlue);
   scene.add(particlesBlue);
-  
   camera.position.z = 12;
-  
-  let mouseX = 0, mouseY = 0;
-  document.addEventListener('mousemove', (event) => {
-    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-    mouseY = (event.clientY / window.innerHeight) * 2 - 1;
-  });
-  
-  let time = 0;
-  function animateParticles() {
-    requestAnimationFrame(animateParticles);
-    time += 0.005;
-    particlesOrange.rotation.y = Math.sin(time * 0.2) * 0.2;
-    particlesOrange.rotation.x = Math.sin(time * 0.3) * 0.1;
-    particlesBlue.rotation.y = Math.sin(time * 0.25) * 0.15;
-    particlesBlue.rotation.x = Math.sin(time * 0.35) * 0.1;
-    camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
-    camera.position.y += (-mouseY * 0.5 - camera.position.y) * 0.05;
-    camera.lookAt(scene.position);
-    renderer.render(scene, camera);
-  }
-  animateParticles();
-  
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-  
-  // -------------------------------
-  // 2. GSAP Scroll Animations
-  // -------------------------------
+  let mouseX=0,mouseY=0;
+  document.addEventListener('mousemove', (e)=>{ mouseX=(e.clientX/window.innerWidth)*2-1; mouseY=(e.clientY/window.innerHeight)*2-1; });
+  let time=0;
+  function animate(){ requestAnimationFrame(animate); time+=0.005; particlesOrange.rotation.y=Math.sin(time*0.2)*0.2; particlesBlue.rotation.y=Math.sin(time*0.25)*0.15; camera.position.x+=(mouseX*0.5-camera.position.x)*0.05; camera.position.y+=(-mouseY*0.5-camera.position.y)*0.05; camera.lookAt(scene.position); renderer.render(scene,camera); }
+  animate();
+  window.addEventListener('resize',()=>{ camera.aspect=window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth,window.innerHeight); });
+
+  // ----- GSAP Scroll Animations -----
   gsap.registerPlugin(ScrollTrigger);
-  
-  gsap.utils.toArray('.gsap-fade').forEach((elem) => {
-    gsap.from(elem, {
-      scrollTrigger: {
-        trigger: elem,
-        start: 'top 85%',
-        end: 'top 50%',
-        scrub: false,
-        once: true
-      },
-      opacity: 0,
-      y: 50,
-      duration: 0.8,
-      ease: 'power2.out'
-    });
-  });
-  
-  gsap.to('.hero-content', { opacity: 1, y: 0, duration: 1.2, delay: 0.3, ease: 'power2.out' });
-  gsap.to('.scroll-indicator', { opacity: 1, duration: 1, delay: 1 });
-  gsap.to('.sound-hint', { opacity: 1, duration: 1, delay: 1.5, onComplete: () => {
-    setTimeout(() => { gsap.to('.sound-hint', { opacity: 0, duration: 1, delay: 3 }); }, 4000);
-  }});
-  
-  document.getElementById('scrollIndicator').addEventListener('click', () => {
-    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
-  });
-  
-  // -------------------------------
-  // 3. Video Controls (Avatar + Sound)
-  // -------------------------------
+  gsap.utils.toArray('.gsap-fade').forEach(elem=>{ gsap.from(elem, { scrollTrigger:{ trigger:elem, start:'top 85%', once:true }, opacity:0, y:50, duration:0.8 }); });
+  gsap.to('.hero-content', { opacity:1, y:0, duration:1.2, delay:0.3 });
+  gsap.to('.scroll-indicator', { opacity:1, duration:1, delay:1 });
+  gsap.to('.sound-hint', { opacity:1, duration:1, delay:1.5, onComplete:()=>{ setTimeout(()=>{ gsap.to('.sound-hint', { opacity:0, duration:1, delay:3 }); },4000); } });
+  document.getElementById('scrollIndicator').addEventListener('click',()=>{ window.scrollTo({ top: window.innerHeight, behavior:'smooth' }); });
+
+  // ----- Video controls (with sound) -----
   const fgVideo = document.getElementById('fgVideo');
   const bgVideo = document.getElementById('bgVideo');
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const muteUnmuteBtn = document.getElementById('muteUnmuteBtn');
+  const playPause = document.getElementById('playPauseBtn');
+  const muteBtn = document.getElementById('muteUnmuteBtn');
   const soundHint = document.getElementById('soundHint');
-  
-  let isPlaying = true;
-  let isMuted = false;
-  
-  playPauseBtn.addEventListener('click', () => {
-    if (isPlaying) {
-      fgVideo.pause();
-      bgVideo.pause();
-      playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-    } else {
-      fgVideo.play();
-      bgVideo.play();
-      playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-    }
-    isPlaying = !isPlaying;
+  let isPlaying=true, isMuted=true;
+  fgVideo.muted=true; bgVideo.muted=true;
+  fgVideo.play().catch(e=>console.log);
+  bgVideo.play().catch(e=>console.log);
+  playPause.addEventListener('click',()=>{ if(isPlaying){ fgVideo.pause(); bgVideo.pause(); playPause.innerHTML='<i class="fas fa-play"></i>'; } else { fgVideo.play(); bgVideo.play(); playPause.innerHTML='<i class="fas fa-pause"></i>'; } isPlaying=!isPlaying; });
+  muteBtn.addEventListener('click',()=>{ if(isMuted){ fgVideo.muted=false; bgVideo.muted=true; muteBtn.innerHTML='<i class="fas fa-volume-up"></i>'; soundHint.style.opacity='0'; } else { fgVideo.muted=true; muteBtn.innerHTML='<i class="fas fa-volume-mute"></i>'; soundHint.style.opacity='0.8'; setTimeout(()=>{ soundHint.style.opacity='0'; },2000); } isMuted=!isMuted; });
+
+  // ----- VOICE EXPLANATION (speak on click) -----
+  let voiceEnabled = true;
+  const toggleBtn = document.getElementById('voiceToggleBtn');
+  toggleBtn.addEventListener('click', (e) => { e.stopPropagation(); voiceEnabled = !voiceEnabled; toggleBtn.innerHTML = voiceEnabled ? '<i class="fas fa-volume-up"></i> Voice ON' : '<i class="fas fa-volume-mute"></i> Voice OFF'; });
+  function speakText(text) { if(voiceEnabled && text) { const utterance = new SpeechSynthesisUtterance(text); utterance.rate = 0.9; utterance.pitch = 1.0; utterance.lang = 'en-US'; window.speechSynthesis.cancel(); window.speechSynthesis.speak(utterance); } }
+  // Add click-to-speak to all cards, skill badges, section titles
+  document.querySelectorAll('.card, .skill-badge, .section-title').forEach(el => {
+    el.addEventListener('click', (e) => { e.stopPropagation(); let text = el.getAttribute('data-speak'); if(!text && el.classList.contains('skill-badge')) text = el.innerText.trim() + ' skill.'; else if(!text && el.classList.contains('section-title')) text = el.innerText.trim() + ' section.'; else if(!text && el.classList.contains('card')) text = el.innerText.trim().substring(0, 200); if(text) speakText(text); });
   });
-  
-  muteUnmuteBtn.addEventListener('click', () => {
-    if (isMuted) {
-      fgVideo.muted = false;
-      bgVideo.muted = true;   // keep background video muted for ambience
-      muteUnmuteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-      soundHint.style.opacity = '0';
-    } else {
-      fgVideo.muted = true;
-      muteUnmuteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
-      soundHint.style.opacity = '0.8';
-      setTimeout(() => { soundHint.style.opacity = '0'; }, 2000);
-    }
-    isMuted = !isMuted;
-  });
-  
-  // Autoplay with mute initially (browsers allow muted autoplay)
-  fgVideo.muted = true;
-  bgVideo.muted = true;
-  fgVideo.play().catch(e => console.log('Autoplay prevented:', e));
-  bgVideo.play().catch(e => console.log('Autoplay prevented:', e));
+  // Also make objective card speak
+  document.querySelector('.card[data-speak]')?.addEventListener('click', (e) => { e.stopPropagation(); speakText(e.currentTarget.getAttribute('data-speak')); });
 </script>
 </body>
 </html>
