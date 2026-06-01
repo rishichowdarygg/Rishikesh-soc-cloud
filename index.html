@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Rishikesh Jagarlamudi - Cybersecurity Portfolio | SOC Analyst | Click anything to hear explanation">
   <meta name="theme-color" content="#0a0f1a">
-  <title>Rishikesh Jagarlamudi | SOC Analyst & Voice-Enabled Portfolio</title>
+  <title>Rishikesh Jagarlamudi | SOC Analyst & Voice Portfolio</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -32,45 +32,28 @@
     }
     .main-content { position: relative; z-index: 2; }
     
-    /* Hero video section */
-    .hero-video-section {
+    /* Hero section with static image (no video) */
+    .hero-section {
       position: relative;
       height: 100vh;
       width: 100%;
-      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+      background: linear-gradient(135deg, #0a0f1a, #0f172a);
+      overflow: hidden;
     }
-    .hero-video-background {
+    /* Animated gradient overlay */
+    .hero-section::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      filter: blur(20px) brightness(0.5);
-      transform: scale(1.1);
+      background: radial-gradient(circle at 30% 50%, rgba(59,130,246,0.15), transparent 70%);
       z-index: 1;
-    }
-    .hero-video-foreground {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 2;
-    }
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
-      z-index: 3;
     }
     .hero-content {
       position: relative;
@@ -89,6 +72,15 @@
       color: transparent;
     }
     .hero-content p { font-size: 1.2rem; color: #e2e8f0; margin-top: 1rem; }
+    .hero-badge {
+      margin-top: 2rem;
+      display: inline-block;
+      background: rgba(59,130,246,0.2);
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+    }
     
     .scroll-indicator {
       position: absolute;
@@ -126,48 +118,16 @@
       100% { opacity: 0; }
     }
     
-    .video-controls {
-      position: absolute;
-      bottom: 30px;
-      right: 30px;
-      z-index: 15;
-      display: flex;
-      gap: 12px;
-    }
-    .ctrl-btn {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 50%;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: 0.3s;
-      color: white;
-    }
-    .ctrl-btn:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
-    .sound-hint {
-      position: absolute;
-      bottom: 30px;
-      left: 30px;
-      z-index: 15;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(4px);
-      padding: 6px 14px;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      opacity: 0;
-    }
-    
-    /* Voice toggle button */
-    .voice-toggle {
+    /* Voice toggle + test button */
+    .voice-controls {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 100;
+      display: flex;
+      gap: 10px;
+    }
+    .voice-btn {
       background: rgba(0,0,0,0.7);
       backdrop-filter: blur(8px);
       border-radius: 50px;
@@ -179,7 +139,7 @@
       font-weight: 500;
       transition: 0.3s;
     }
-    .voice-toggle:hover { background: #3b82f6; }
+    .voice-btn:hover { background: #3b82f6; }
     
     /* Content styles */
     .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
@@ -229,30 +189,22 @@
 <body>
 
 <div id="particle-canvas"></div>
-<div class="voice-toggle" id="voiceToggleBtn"><i class="fas fa-volume-up"></i> Voice ON</div>
+<div class="voice-controls">
+  <div class="voice-btn" id="testVoiceBtn"><i class="fas fa-microphone"></i> Test Voice</div>
+  <div class="voice-btn" id="voiceToggleBtn"><i class="fas fa-volume-up"></i> Voice ON</div>
+</div>
 
 <div class="main-content">
-  <section class="hero-video-section" id="hero">
-    <video class="hero-video-background" id="bgVideo" muted playsinline loop>
-      <source src="https://cdn.pixabay.com/video/2023/05/30/165556-829238675_large.mp4" type="video/mp4">
-    </video>
-    <video class="hero-video-foreground" id="fgVideo" muted playsinline loop>
-      <source src="https://cdn.pixabay.com/video/2023/05/30/165556-829238675_large.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
+  <section class="hero-section" id="hero">
     <div class="hero-content">
       <h1>RISHIKESH JAGARLAMUDI</h1>
       <p>Cybersecurity Student | SOC Analyst | Click anything for voice explanation</p>
+      <div class="hero-badge"><i class="fas fa-ear-listen"></i> Tap any card or skill → voice speaks</div>
     </div>
     <div class="scroll-indicator" id="scrollIndicator">
       <div class="mouse"></div>
       <span style="font-size:0.7rem;">Scroll</span>
     </div>
-    <div class="video-controls">
-      <div class="ctrl-btn" id="playPauseBtn"><i class="fas fa-pause"></i></div>
-      <div class="ctrl-btn" id="muteUnmuteBtn"><i class="fas fa-volume-up"></i></div>
-    </div>
-    <div class="sound-hint" id="soundHint">🔊 Tap for sound</div>
   </section>
 
   <div class="container">
@@ -291,15 +243,15 @@
       <div class="grid-2">
         <div class="card" data-speak="Security and SOC skills: Microsoft Sentinel, log analysis, threat detection, incident response, vulnerability assessment.">
           <h3>Security & SOC</h3>
-          <div class="tech-stack"><span class="skill-badge" data-speak="Microsoft Sentinel">Sentinel</span><span class="skill-badge" data-speak="Log analysis">Log Analysis</span><span class="skill-badge" data-speak="Threat detection">Threat Detection</span><span class="skill-badge" data-speak="Incident response">Incident Response</span></div>
+          <div class="tech-stack"><span class="skill-badge" data-speak="Microsoft Sentinel for SIEM">Sentinel</span><span class="skill-badge" data-speak="Log analysis">Log Analysis</span><span class="skill-badge" data-speak="Threat detection">Threat Detection</span><span class="skill-badge" data-speak="Incident response">Incident Response</span></div>
         </div>
         <div class="card" data-speak="Networking tools: Wireshark, TCP/IP, Azure, Linux, firewalls.">
           <h3>Networking & Tools</h3>
-          <div class="tech-stack"><span class="skill-badge">Wireshark</span><span class="skill-badge">Azure</span><span class="skill-badge">Linux</span><span class="skill-badge">Firewalls</span></div>
+          <div class="tech-stack"><span class="skill-badge" data-speak="Wireshark packet analyzer">Wireshark</span><span class="skill-badge" data-speak="Microsoft Azure cloud">Azure</span><span class="skill-badge" data-speak="Linux operating system">Linux</span><span class="skill-badge" data-speak="Firewall concepts">Firewalls</span></div>
         </div>
         <div class="card" data-speak="Languages: KQL, basic scripting, Excel data analysis.">
           <h3>Languages & Query</h3>
-          <div class="tech-stack"><span class="skill-badge">KQL</span><span class="skill-badge">Basic Scripting</span><span class="skill-badge">Excel</span></div>
+          <div class="tech-stack"><span class="skill-badge" data-speak="Kusto Query Language for Sentinel">KQL</span><span class="skill-badge" data-speak="Basic scripting">Scripting</span><span class="skill-badge" data-speak="Excel for data analysis">Excel</span></div>
         </div>
       </div>
     </div>
@@ -367,33 +319,72 @@
   gsap.utils.toArray('.gsap-fade').forEach(elem=>{ gsap.from(elem, { scrollTrigger:{ trigger:elem, start:'top 85%', once:true }, opacity:0, y:50, duration:0.8 }); });
   gsap.to('.hero-content', { opacity:1, y:0, duration:1.2, delay:0.3 });
   gsap.to('.scroll-indicator', { opacity:1, duration:1, delay:1 });
-  gsap.to('.sound-hint', { opacity:1, duration:1, delay:1.5, onComplete:()=>{ setTimeout(()=>{ gsap.to('.sound-hint', { opacity:0, duration:1, delay:3 }); },4000); } });
   document.getElementById('scrollIndicator').addEventListener('click',()=>{ window.scrollTo({ top: window.innerHeight, behavior:'smooth' }); });
 
-  // ----- Video controls (with sound) -----
-  const fgVideo = document.getElementById('fgVideo');
-  const bgVideo = document.getElementById('bgVideo');
-  const playPause = document.getElementById('playPauseBtn');
-  const muteBtn = document.getElementById('muteUnmuteBtn');
-  const soundHint = document.getElementById('soundHint');
-  let isPlaying=true, isMuted=true;
-  fgVideo.muted=true; bgVideo.muted=true;
-  fgVideo.play().catch(e=>console.log);
-  bgVideo.play().catch(e=>console.log);
-  playPause.addEventListener('click',()=>{ if(isPlaying){ fgVideo.pause(); bgVideo.pause(); playPause.innerHTML='<i class="fas fa-play"></i>'; } else { fgVideo.play(); bgVideo.play(); playPause.innerHTML='<i class="fas fa-pause"></i>'; } isPlaying=!isPlaying; });
-  muteBtn.addEventListener('click',()=>{ if(isMuted){ fgVideo.muted=false; bgVideo.muted=true; muteBtn.innerHTML='<i class="fas fa-volume-up"></i>'; soundHint.style.opacity='0'; } else { fgVideo.muted=true; muteBtn.innerHTML='<i class="fas fa-volume-mute"></i>'; soundHint.style.opacity='0.8'; setTimeout(()=>{ soundHint.style.opacity='0'; },2000); } isMuted=!isMuted; });
-
-  // ----- VOICE EXPLANATION (speak on click) -----
+  // ----- VOICE (works on all devices, including iOS) -----
   let voiceEnabled = true;
   const toggleBtn = document.getElementById('voiceToggleBtn');
-  toggleBtn.addEventListener('click', (e) => { e.stopPropagation(); voiceEnabled = !voiceEnabled; toggleBtn.innerHTML = voiceEnabled ? '<i class="fas fa-volume-up"></i> Voice ON' : '<i class="fas fa-volume-mute"></i> Voice OFF'; });
-  function speakText(text) { if(voiceEnabled && text) { const utterance = new SpeechSynthesisUtterance(text); utterance.rate = 0.9; utterance.pitch = 1.0; utterance.lang = 'en-US'; window.speechSynthesis.cancel(); window.speechSynthesis.speak(utterance); } }
+  const testBtn = document.getElementById('testVoiceBtn');
+  
+  // Helper to speak (cancels previous)
+  function speakText(text) {
+    if (!voiceEnabled || !text) return;
+    if (window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.9;
+      utterance.pitch = 1.0;
+      utterance.lang = 'en-US';
+      window.speechSynthesis.speak(utterance);
+    } else {
+      alert('Your browser does not support speech synthesis.');
+    }
+  }
+  
+  // Test voice button (also requests permission on iOS)
+  testBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    speakText('Hello, this is Rishikesh Jagarlamudi\'s portfolio. Click any project or skill to hear an explanation.');
+  });
+  
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    voiceEnabled = !voiceEnabled;
+    toggleBtn.innerHTML = voiceEnabled ? '<i class="fas fa-volume-up"></i> Voice ON' : '<i class="fas fa-volume-mute"></i> Voice OFF';
+    if (voiceEnabled) speakText('Voice guidance enabled');
+  });
+  
   // Add click-to-speak to all cards, skill badges, section titles
   document.querySelectorAll('.card, .skill-badge, .section-title').forEach(el => {
-    el.addEventListener('click', (e) => { e.stopPropagation(); let text = el.getAttribute('data-speak'); if(!text && el.classList.contains('skill-badge')) text = el.innerText.trim() + ' skill.'; else if(!text && el.classList.contains('section-title')) text = el.innerText.trim() + ' section.'; else if(!text && el.classList.contains('card')) text = el.innerText.trim().substring(0, 200); if(text) speakText(text); });
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      let text = el.getAttribute('data-speak');
+      if (!text && el.classList.contains('skill-badge')) text = el.innerText.trim() + ' skill.';
+      else if (!text && el.classList.contains('section-title')) text = el.innerText.trim() + ' section.';
+      else if (!text && el.classList.contains('card')) {
+        // For cards without data-speak, use the heading text
+        const heading = el.querySelector('h3');
+        text = heading ? heading.innerText.trim() : el.innerText.trim().substring(0, 150);
+      }
+      if (text) speakText(text);
+    });
   });
-  // Also make objective card speak
-  document.querySelector('.card[data-speak]')?.addEventListener('click', (e) => { e.stopPropagation(); speakText(e.currentTarget.getAttribute('data-speak')); });
+  
+  // Also handle objective card explicitly
+  const objCard = document.querySelector('.card[data-speak]');
+  if (objCard) {
+    objCard.addEventListener('click', (e) => {
+      e.stopPropagation();
+      speakText(objCard.getAttribute('data-speak'));
+    });
+  }
+  
+  // On page load, give a short intro voice (but wait a bit for user interaction on iOS)
+  setTimeout(() => {
+    if (voiceEnabled) {
+      speakText('Welcome to my cybersecurity portfolio. Click any card or skill to hear details.');
+    }
+  }, 1000);
 </script>
 </body>
 </html>
