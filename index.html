@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Rishikesh Jagarlamudi - Cybersecurity Portfolio | SOC Analyst | Click anything to hear explanation">
+  <meta name="description" content="Rishikesh Jagarlamudi - Cybersecurity Portfolio | SOC Analyst | Click anything for voice explanation">
   <meta name="theme-color" content="#0a0f1a">
   <title>Rishikesh Jagarlamudi | SOC Analyst & Voice Portfolio</title>
   
@@ -32,7 +32,7 @@
     }
     .main-content { position: relative; z-index: 2; }
     
-    /* Hero section with static image (no video) */
+    /* Hero section */
     .hero-section {
       position: relative;
       height: 100vh;
@@ -44,7 +44,6 @@
       background: linear-gradient(135deg, #0a0f1a, #0f172a);
       overflow: hidden;
     }
-    /* Animated gradient overlay */
     .hero-section::before {
       content: '';
       position: absolute;
@@ -118,7 +117,6 @@
       100% { opacity: 0; }
     }
     
-    /* Voice toggle + test button */
     .voice-controls {
       position: fixed;
       bottom: 20px;
@@ -141,7 +139,6 @@
     }
     .voice-btn:hover { background: #3b82f6; }
     
-    /* Content styles */
     .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
     .section { padding: 5rem 0; border-bottom: 1px solid rgba(59, 130, 246, 0.2); }
     .section-title {
@@ -237,21 +234,64 @@
       </div>
     </div>
 
-    <!-- Skills -->
+    <!-- Technical Skills (UPDATED with new skills) -->
     <div id="skills" class="section gsap-fade">
-      <h2 class="section-title" data-speak="My technical skills include security operations, networking, and KQL querying."><i class="fas fa-code-branch"></i> Technical Skills</h2>
+      <h2 class="section-title" data-speak="My technical skills include security operations, networking, ethical hacking, and KQL querying."><i class="fas fa-code-branch"></i> Technical Skills</h2>
       <div class="grid-2">
+        <!-- Security & SOC -->
         <div class="card" data-speak="Security and SOC skills: Microsoft Sentinel, log analysis, threat detection, incident response, vulnerability assessment.">
           <h3>Security & SOC</h3>
-          <div class="tech-stack"><span class="skill-badge" data-speak="Microsoft Sentinel for SIEM">Sentinel</span><span class="skill-badge" data-speak="Log analysis">Log Analysis</span><span class="skill-badge" data-speak="Threat detection">Threat Detection</span><span class="skill-badge" data-speak="Incident response">Incident Response</span></div>
+          <div class="tech-stack">
+            <span class="skill-badge" data-speak="Microsoft Sentinel for SIEM">Sentinel</span>
+            <span class="skill-badge" data-speak="Log analysis">Log Analysis</span>
+            <span class="skill-badge" data-speak="Threat detection">Threat Detection</span>
+            <span class="skill-badge" data-speak="Incident response">Incident Response</span>
+            <span class="skill-badge" data-speak="Vulnerability assessment">Vulnerability Assessment</span>
+          </div>
         </div>
-        <div class="card" data-speak="Networking tools: Wireshark, TCP/IP, Azure, Linux, firewalls.">
-          <h3>Networking & Tools</h3>
-          <div class="tech-stack"><span class="skill-badge" data-speak="Wireshark packet analyzer">Wireshark</span><span class="skill-badge" data-speak="Microsoft Azure cloud">Azure</span><span class="skill-badge" data-speak="Linux operating system">Linux</span><span class="skill-badge" data-speak="Firewall concepts">Firewalls</span></div>
+        <!-- Networking -->
+        <div class="card" data-speak="Networking skills: TCP/IP, DNS, Firewalls, VPN Concepts, Wireshark, Azure, Linux.">
+          <h3>Networking</h3>
+          <div class="tech-stack">
+            <span class="skill-badge" data-speak="TCP/IP protocol suite">TCP/IP</span>
+            <span class="skill-badge" data-speak="Domain Name System">DNS</span>
+            <span class="skill-badge" data-speak="Firewall configuration">Firewalls</span>
+            <span class="skill-badge" data-speak="Virtual Private Network concepts">VPN Concepts</span>
+            <span class="skill-badge" data-speak="Wireshark packet analyzer">Wireshark</span>
+            <span class="skill-badge" data-speak="Microsoft Azure cloud">Azure</span>
+            <span class="skill-badge" data-speak="Linux operating system">Linux</span>
+          </div>
         </div>
+        <!-- Cybersecurity Fundamentals -->
+        <div class="card" data-speak="Cybersecurity fundamentals: risk management, vulnerability assessment, data privacy, compliance, and security frameworks.">
+          <h3>Cybersecurity Fundamentals</h3>
+          <div class="tech-stack">
+            <span class="skill-badge" data-speak="Risk management">Risk Management</span>
+            <span class="skill-badge" data-speak="Vulnerability assessment">Vulnerability Assessment</span>
+            <span class="skill-badge" data-speak="Data privacy">Data Privacy</span>
+            <span class="skill-badge" data-speak="Compliance">Compliance</span>
+            <span class="skill-badge" data-speak="Security frameworks">Security Frameworks</span>
+          </div>
+        </div>
+        <!-- Ethical Hacking -->
+        <div class="card" data-speak="Ethical hacking skills: reconnaissance, scanning, exploitation basics, reporting, and KQL querying.">
+          <h3>Ethical Hacking</h3>
+          <div class="tech-stack">
+            <span class="skill-badge" data-speak="Reconnaissance">Reconnaissance</span>
+            <span class="skill-badge" data-speak="Scanning">Scanning</span>
+            <span class="skill-badge" data-speak="Exploitation basics">Exploitation Basics</span>
+            <span class="skill-badge" data-speak="Reporting">Reporting</span>
+            <span class="skill-badge" data-speak="Kusto Query Language for Sentinel">KQL</span>
+          </div>
+        </div>
+        <!-- Languages & Query -->
         <div class="card" data-speak="Languages: KQL, basic scripting, Excel data analysis.">
           <h3>Languages & Query</h3>
-          <div class="tech-stack"><span class="skill-badge" data-speak="Kusto Query Language for Sentinel">KQL</span><span class="skill-badge" data-speak="Basic scripting">Scripting</span><span class="skill-badge" data-speak="Excel for data analysis">Excel</span></div>
+          <div class="tech-stack">
+            <span class="skill-badge" data-speak="Kusto Query Language">KQL</span>
+            <span class="skill-badge" data-speak="Basic scripting">Scripting</span>
+            <span class="skill-badge" data-speak="Excel for data analysis">Excel</span>
+          </div>
         </div>
       </div>
     </div>
@@ -288,7 +328,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-  // ----- Three.js Particles (same as before) -----
+  // ----- Three.js Particles -----
   const canvasContainer = document.getElementById('particle-canvas');
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
@@ -321,12 +361,11 @@
   gsap.to('.scroll-indicator', { opacity:1, duration:1, delay:1 });
   document.getElementById('scrollIndicator').addEventListener('click',()=>{ window.scrollTo({ top: window.innerHeight, behavior:'smooth' }); });
 
-  // ----- VOICE (works on all devices, including iOS) -----
+  // ----- VOICE -----
   let voiceEnabled = true;
   const toggleBtn = document.getElementById('voiceToggleBtn');
   const testBtn = document.getElementById('testVoiceBtn');
   
-  // Helper to speak (cancels previous)
   function speakText(text) {
     if (!voiceEnabled || !text) return;
     if (window.speechSynthesis) {
@@ -341,7 +380,6 @@
     }
   }
   
-  // Test voice button (also requests permission on iOS)
   testBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     speakText('Hello, this is Rishikesh Jagarlamudi\'s portfolio. Click any project or skill to hear an explanation.');
@@ -354,7 +392,6 @@
     if (voiceEnabled) speakText('Voice guidance enabled');
   });
   
-  // Add click-to-speak to all cards, skill badges, section titles
   document.querySelectorAll('.card, .skill-badge, .section-title').forEach(el => {
     el.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -362,7 +399,6 @@
       if (!text && el.classList.contains('skill-badge')) text = el.innerText.trim() + ' skill.';
       else if (!text && el.classList.contains('section-title')) text = el.innerText.trim() + ' section.';
       else if (!text && el.classList.contains('card')) {
-        // For cards without data-speak, use the heading text
         const heading = el.querySelector('h3');
         text = heading ? heading.innerText.trim() : el.innerText.trim().substring(0, 150);
       }
@@ -370,7 +406,6 @@
     });
   });
   
-  // Also handle objective card explicitly
   const objCard = document.querySelector('.card[data-speak]');
   if (objCard) {
     objCard.addEventListener('click', (e) => {
@@ -379,7 +414,6 @@
     });
   }
   
-  // On page load, give a short intro voice (but wait a bit for user interaction on iOS)
   setTimeout(() => {
     if (voiceEnabled) {
       speakText('Welcome to my cybersecurity portfolio. Click any card or skill to hear details.');
